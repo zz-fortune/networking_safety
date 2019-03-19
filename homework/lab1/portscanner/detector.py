@@ -37,9 +37,6 @@ class scanthread(threading.Thread):
         self._texts.insert(tk.END, 'start scanning...\n')
         reqs = threadpool.makeRequests(scan_thread, urls_list)
         for req in reqs:
-            # if self._is_running is False:
-            #     self._pool.dismissWorkers(self._thread_n)
-            #     break
             self._pool.putRequest(req)
         try:
             self._pool.joinAllDismissedWorkers()
