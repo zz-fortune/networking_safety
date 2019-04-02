@@ -67,20 +67,19 @@ int init_pcap(pcap_t **device, char *filenamebuf, bpf_u_int32 *netmask){
     char filename[FILE_NAME_LEN], filepath[FILE_NAME_LEN] = "data/";
 
     // 读入存储结果的文件
-    while(1){
-        printf("Input the filename to store the results: ");
-        scanf("%s", filename);
-        strcat(filepath, filename);
-        // printf("%s\n", filepath);
-        if(access(filepath, F_OK)==0){
-            printf("file already exists!\n");
-            strcpy(filepath, "data/");
-        }else{
-            strcpy(filenamebuf, filepath);
-            break;
-        }
-    }
-
+    // while(1){
+    //     printf("Input the filename to store the results: ");
+    //     scanf("%s", filename);
+    //     strcat(filepath, filename);
+    //     if(access(filepath, F_OK)==0){
+    //         printf("file already exists!\n");
+    //         strcpy(filepath, "data/");
+    //     }else{
+    //         strcpy(filenamebuf, filepath);
+    //         break;
+    //     }
+    // }
+    strcpy(filenamebuf, "data/test3.txt");
     //　获取root权限，便于打开设备
     if(setuid(0)){
         printf("setuid error: can't get root pemission!\n");
@@ -118,21 +117,18 @@ int init_pcap(pcap_t **device, char *filenamebuf, bpf_u_int32 *netmask){
 
 
 void filter_pcap(pcap_t *device, bpf_u_int32 netmask){
-    char filter[FILTER_RULE_LEN];
+    char filter[FILTER_RULE_LEN] = "port 8080";
     // char f[FILE_NAME_LEN] = "net 166.111.4.100";
     struct bpf_program filter_p;
 
     // 读入过滤规则
     while(1){
-        printf("Input the filt rule (input [ENTER] to stop): \n");
-        // scanf("%s", filter);
-        setbuf(stdin, NULL);
-        gets(filter);
-        // printf("%s\n", filter);
-        // fflush(stdin);
-        if (strlen(filter)==0){
-            break;
-        }
+        // printf("Input the filt rule (input [ENTER] to stop): \n");
+        // setbuf(stdin, NULL);
+        // gets(filter);
+        // if (strlen(filter)==0){
+        //     break;
+        // }
 
         //　编译过滤规则
         if(pcap_compile(device, &filter_p, filter, 0, netmask)<0){
@@ -169,11 +165,11 @@ void* start_pcap(void *param){
     flag = 1;
 
     printf("start to capture packages...\n");
-    // int index = 0;
+    int index = 0;
     // 不断抓包
     while(flag){
         pktstr = pcap_next(device, &pkthdr);
-        // printf("pkt %d, length: %d. \n", index++, pkthdr.len);
+        printf("pkt %d, length: %d. \n", index++, pkthdr.len);
         if(!pktstr){
             continue;
         }
