@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/client/controller/ClientApp.java=UTF-8
+encoding//src/client/controller/LoginViewController.java=UTF-8
+encoding//src/client/model/Account.java=UTF-8
+encoding//src/server/ClientSession.java=UTF-8
+encoding//src/server/Server.java=UTF-8
+encoding//src/utils/SessionPackage.java=UTF-8
+encoding//src/utils/Utils.java=UTF-8

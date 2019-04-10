@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.LoginViewController">
+   <center>
+      <Pane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutY="50.0" prefHeight="200.0" prefWidth="400.0">
+               <children>
+                  <Label layoutX="55.0" layoutY="20.0" minHeight="20.0" prefHeight="40.0" text="用户名" textAlignment="JUSTIFY" />
+                  <Label layoutX="55.0" layoutY="74.0" minHeight="20.0" prefHeight="40.0" text="密   码" textAlignment="JUSTIFY" />
+                  <TextField fx:id="username" layoutX="110.0" layoutY="20.0" minHeight="20.0" prefHeight="35.0" prefWidth="200.0" />
+                  <PasswordField fx:id="password" layoutX="110.0" layoutY="74.0" minHeight="20.0" prefHeight="35.0" prefWidth="200.0" />
+                  <Button layoutX="140.0" layoutY="138.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="120.0" text="登录" />
+               </children>
+            </Pane>
+            <Pane layoutY="250.0" prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <Label fx:id="tips" alignment="CENTER" layoutY="10.0" prefHeight="30.0" prefWidth="400.0" textAlignment="CENTER" />
+               </children>
+            </Pane>
+         </children></Pane>
+   </center>
+</BorderPane>
